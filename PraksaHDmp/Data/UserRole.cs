@@ -1,6 +1,6 @@
 ﻿namespace PraksaHDmp.Data
 {
-    public class UserRole
+    public class UserRole 
     {
         public bool? Active { get; set; }
 
