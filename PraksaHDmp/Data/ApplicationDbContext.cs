@@ -13,8 +13,10 @@ namespace PraksaHDmp.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<UserRole> UserRoles {  get; set; }
-
         public DbSet<Employee> Employee { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Building> Buildings { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -3,7 +3,8 @@
     public class Server : BaseClass
     {
 
-        public string Name { get; set; }
- 
+        
+
+  
     }
 }
