@@ -1,6 +1,8 @@
 ﻿namespace PraksaHDmp.Data
 {
-    public class ComputerOS
+    public class ComputerOS : BaseClass
     {
+        public string Name { get; set; }
+
     }
 }

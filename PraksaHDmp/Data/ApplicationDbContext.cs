@@ -21,6 +21,7 @@ namespace PraksaHDmp.Data
         public DbSet<ApplicationUsage> ApplicationUsages { get; set; }
         public DbSet<Application> Applications { get; set; }
         public DbSet<Log> Logs { get; set; }
+        public DbSet<ComputerOS> ComputerOsses { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
