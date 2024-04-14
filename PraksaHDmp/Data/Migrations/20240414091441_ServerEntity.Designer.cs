@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PraksaHDmp.Data;
 
@@ -11,9 +12,10 @@ using PraksaHDmp.Data;
 namespace PraksaHDmp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240414091441_ServerEntity")]
+    partial class ServerEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,125 +226,6 @@ namespace PraksaHDmp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("PraksaHDmp.Data.Application", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ApplicationUsageId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Author")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Contact")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactPhone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Maintence")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("MaintenceExpiration")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NumberOfUsers")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ResponsibleEmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ServerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserCreatedId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserModifiedId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Version")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUsageId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("ServerId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Applications");
-                });
-
-            modelBuilder.Entity("PraksaHDmp.Data.ApplicationUsage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Priority")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserCreatedId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserModifiedId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ApplicationUsages");
-                });
-
             modelBuilder.Entity("PraksaHDmp.Data.Building", b =>
                 {
                     b.Property<int>("Id")
@@ -503,47 +386,6 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("PraksaHDmp.Data.Log", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ApplicationId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserCreatedId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserModifiedId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Logs");
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Role", b =>
@@ -745,48 +587,6 @@ namespace PraksaHDmp.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PraksaHDmp.Data.Application", b =>
-                {
-                    b.HasOne("PraksaHDmp.Data.ApplicationUsage", "ApplicationUsage")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUsageId");
-
-                    b.HasOne("PraksaHDmp.Data.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PraksaHDmp.Data.Server", "Server")
-                        .WithMany()
-                        .HasForeignKey("ServerId");
-
-                    b.HasOne("PraksaHDmp.Data.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUsage");
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("Server");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("PraksaHDmp.Data.ApplicationUsage", b =>
-                {
-                    b.HasOne("PraksaHDmp.Data.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("PraksaHDmp.Data.Building", b =>
                 {
                     b.HasOne("PraksaHDmp.Data.Location", "Location")
@@ -843,25 +643,6 @@ namespace PraksaHDmp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Department");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("PraksaHDmp.Data.Log", b =>
-                {
-                    b.HasOne("PraksaHDmp.Data.Application", "Application")
-                        .WithMany()
-                        .HasForeignKey("ApplicationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PraksaHDmp.Data.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Application");
 
                     b.Navigation("User");
                 });
