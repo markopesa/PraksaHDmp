@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PraksaHDmp.Data;
 
@@ -11,9 +12,10 @@ using PraksaHDmp.Data;
 namespace PraksaHDmp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240416140356_SetLimitations1")]
+    partial class SetLimitations1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -800,7 +802,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -836,7 +838,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -965,7 +967,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1004,7 +1006,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1082,7 +1084,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1118,7 +1120,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1157,7 +1159,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1195,7 +1197,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Size")
                         .IsRequired()
-                        .HasColumnType("varchar(5)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1231,7 +1233,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1303,7 +1305,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1318,50 +1320,6 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasIndex("UserModifiedId");
 
                     b.ToTable("PartnerContactTypes");
-                });
-
-            modelBuilder.Entity("PraksaHDmp.Data.Photo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("EntityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EntityTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("UserCreatedId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserModifiedId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EntityTypeId");
-
-                    b.HasIndex("UserCreatedId");
-
-                    b.HasIndex("UserModifiedId");
-
-                    b.ToTable("Photos");
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.PrinterType", b =>
@@ -1383,7 +1341,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1419,7 +1377,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -1494,7 +1452,7 @@ namespace PraksaHDmp.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
@@ -2185,31 +2143,6 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId");
-
-                    b.Navigation("UserCreated");
-
-                    b.Navigation("UserModified");
-                });
-
-            modelBuilder.Entity("PraksaHDmp.Data.Photo", b =>
-                {
-                    b.HasOne("PraksaHDmp.Data.EntityType", "EntityType")
-                        .WithMany()
-                        .HasForeignKey("EntityTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PraksaHDmp.Data.User", "UserCreated")
-                        .WithMany()
-                        .HasForeignKey("UserCreatedId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PraksaHDmp.Data.User", "UserModified")
-                        .WithMany()
-                        .HasForeignKey("UserModifiedId");
-
-                    b.Navigation("EntityType");
 
                     b.Navigation("UserCreated");
 

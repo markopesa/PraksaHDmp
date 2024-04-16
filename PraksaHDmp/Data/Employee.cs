@@ -1,8 +1,12 @@
-﻿namespace PraksaHDmp.Data
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PraksaHDmp.Data
 {
     public class Employee 
     {
+        [Column(TypeName = "nvarchar(50)")]
         public string FirstName { get; set; }
+        [Column(TypeName = "nvarchar(50)")]
         public string LastName { get; set; }
         public User UserCreated { get; set; }
         public User? UserModified { get; set; }

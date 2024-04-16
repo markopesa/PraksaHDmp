@@ -40,6 +40,9 @@ namespace PraksaHDmp.Data
         public DbSet<Address> Addresses { get; set; }  
         public DbSet<RAMType> RAMTypes { get; set; }
         public DbSet<Computer> Computers { get; set; }
+        public DbSet<DocumentType> DocumentTypes { get; set; }
+        public DbSet<Device> Devices { get; set; }
+        public DbSet<Photo> Photos { get; set; }    
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
