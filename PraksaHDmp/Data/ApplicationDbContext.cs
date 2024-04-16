@@ -34,7 +34,12 @@ namespace PraksaHDmp.Data
         public DbSet<MonitorType> MonitorTypes { get; set; }
         public DbSet<PartnerContactType> PartnerContactTypes { get; set; }
         public DbSet<PrinterType> PrinterTypes { get; set; }
-        
+        public DbSet<DeviceServer> DeviceServers { get; set; }  
+        public DbSet<Partner> Partners { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Address> Addresses { get; set; }  
+        public DbSet<RAMType> RAMTypes { get; set; }
+        public DbSet<Computer> Computers { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

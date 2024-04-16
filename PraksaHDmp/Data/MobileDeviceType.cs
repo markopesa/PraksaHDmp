@@ -2,8 +2,6 @@
 {
     public class MobileDeviceType : BaseClass
     {
-        public User UserCreated { get; set; }
-        public User UserModified { get; set; }
         public string Name { get; set; }
     }
 }

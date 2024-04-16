@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PraksaHDmp.Data;
 
@@ -11,9 +12,10 @@ using PraksaHDmp.Data;
 namespace PraksaHDmp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240416105303_AddresEntity")]
+    partial class AddresEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -432,82 +434,6 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasIndex("UserModifiedId");
 
                     b.ToTable("Buildings");
-                });
-
-            modelBuilder.Entity("PraksaHDmp.Data.Computer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool?>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("CPU")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ComputerOSId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("HDDCapacity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("HDDModel")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("HDDSpeedId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HDDTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Laptop")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("License")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Model")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NumberOfDiskDrives")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RAM")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RAMTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserCreatedId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserModifiedId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ComputerOSId");
-
-                    b.HasIndex("HDDTypeId");
-
-                    b.HasIndex("RAMTypeId");
-
-                    b.HasIndex("UserCreatedId");
-
-                    b.HasIndex("UserModifiedId");
-
-                    b.ToTable("Computers");
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.ComputerOS", b =>
@@ -1255,42 +1181,6 @@ namespace PraksaHDmp.Data.Migrations
                     b.ToTable("PrinterTypes");
                 });
 
-            modelBuilder.Entity("PraksaHDmp.Data.RAMType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserCreatedId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserModifiedId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserCreatedId");
-
-                    b.HasIndex("UserModifiedId");
-
-                    b.ToTable("RAMTypes");
-                });
-
             modelBuilder.Entity("PraksaHDmp.Data.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -1595,41 +1485,6 @@ namespace PraksaHDmp.Data.Migrations
                         .HasForeignKey("UserModifiedId");
 
                     b.Navigation("Location");
-
-                    b.Navigation("UserCreated");
-
-                    b.Navigation("UserModified");
-                });
-
-            modelBuilder.Entity("PraksaHDmp.Data.Computer", b =>
-                {
-                    b.HasOne("PraksaHDmp.Data.ComputerOS", "ComputerOS")
-                        .WithMany()
-                        .HasForeignKey("ComputerOSId");
-
-                    b.HasOne("PraksaHDmp.Data.HDDType", "HDDType")
-                        .WithMany()
-                        .HasForeignKey("HDDTypeId");
-
-                    b.HasOne("PraksaHDmp.Data.RAMType", "RAMType")
-                        .WithMany()
-                        .HasForeignKey("RAMTypeId");
-
-                    b.HasOne("PraksaHDmp.Data.User", "UserCreated")
-                        .WithMany()
-                        .HasForeignKey("UserCreatedId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PraksaHDmp.Data.User", "UserModified")
-                        .WithMany()
-                        .HasForeignKey("UserModifiedId");
-
-                    b.Navigation("ComputerOS");
-
-                    b.Navigation("HDDType");
-
-                    b.Navigation("RAMType");
 
                     b.Navigation("UserCreated");
 
@@ -1992,23 +1847,6 @@ namespace PraksaHDmp.Data.Migrations
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.PrinterType", b =>
-                {
-                    b.HasOne("PraksaHDmp.Data.User", "UserCreated")
-                        .WithMany()
-                        .HasForeignKey("UserCreatedId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PraksaHDmp.Data.User", "UserModified")
-                        .WithMany()
-                        .HasForeignKey("UserModifiedId");
-
-                    b.Navigation("UserCreated");
-
-                    b.Navigation("UserModified");
-                });
-
-            modelBuilder.Entity("PraksaHDmp.Data.RAMType", b =>
                 {
                     b.HasOne("PraksaHDmp.Data.User", "UserCreated")
                         .WithMany()
