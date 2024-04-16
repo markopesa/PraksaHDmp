@@ -14,12 +14,14 @@ namespace PraksaHDmp.Data
         public string Username { get; set; }
         public string Mail { get; set; } 
         public DateTime? LastLogin { get; set; }
+        [ForeignKey("UserCreatedId")]
         public int UserCreatedId { get; set; }
-        [ForeignKey(nameof(UserCreatedId))]
+        
         public User UserCreated { get; set; }
-      
+
+        [ForeignKey("UserModifiedId")]
         public int? UserModifiedId { get; set; }
-        [ForeignKey(nameof(UserModifiedId))]
+        
         public User UserModified { get; set; }
 
         public ICollection<UserRole> UserRoles { get; set; }

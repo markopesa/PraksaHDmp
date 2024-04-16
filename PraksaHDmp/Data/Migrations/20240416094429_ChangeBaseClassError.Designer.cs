@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PraksaHDmp.Data;
 
@@ -11,9 +12,10 @@ using PraksaHDmp.Data;
 namespace PraksaHDmp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240416094429_ChangeBaseClassError")]
+    partial class ChangeBaseClassError
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -281,6 +283,9 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
@@ -296,6 +301,8 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasIndex("ServerId");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -329,12 +336,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -368,6 +380,9 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
@@ -376,6 +391,8 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasIndex("LocationId");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -406,12 +423,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -442,12 +464,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -478,12 +505,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -514,12 +546,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -550,12 +587,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -590,12 +632,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -626,12 +673,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -662,12 +714,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -701,6 +758,9 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
@@ -709,6 +769,8 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -741,6 +803,9 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
@@ -749,6 +814,8 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasIndex("ApplicationId");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -779,12 +846,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -815,12 +887,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -854,6 +931,9 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
@@ -862,6 +942,8 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasIndex("MonitorFormatId");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -892,12 +974,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -928,12 +1015,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -964,12 +1056,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -1000,12 +1097,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -1036,12 +1138,17 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -1075,6 +1182,9 @@ namespace PraksaHDmp.Data.Migrations
                     b.Property<int>("UserCreatedId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserModifiedId")
                         .HasColumnType("int");
 
@@ -1083,6 +1193,8 @@ namespace PraksaHDmp.Data.Migrations
                     b.HasIndex("BuildingId");
 
                     b.HasIndex("UserCreatedId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("UserModifiedId");
 
@@ -1232,6 +1344,12 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
@@ -1243,6 +1361,8 @@ namespace PraksaHDmp.Data.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("Server");
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1257,11 +1377,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1282,6 +1410,12 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
@@ -1289,6 +1423,8 @@ namespace PraksaHDmp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Location");
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1303,11 +1439,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1322,11 +1466,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1341,11 +1493,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1360,11 +1520,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1379,11 +1547,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1398,11 +1574,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1417,11 +1601,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1436,11 +1628,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1461,6 +1661,12 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
@@ -1468,6 +1674,8 @@ namespace PraksaHDmp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Department");
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1488,6 +1696,12 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
@@ -1495,6 +1709,8 @@ namespace PraksaHDmp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Application");
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1509,11 +1725,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1528,11 +1752,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1553,6 +1785,12 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
@@ -1560,6 +1798,8 @@ namespace PraksaHDmp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("MonitorFormat");
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1574,11 +1814,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1593,11 +1841,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1612,11 +1868,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1631,11 +1895,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1650,11 +1922,19 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 
@@ -1675,6 +1955,12 @@ namespace PraksaHDmp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PraksaHDmp.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PraksaHDmp.Data.User", "UserModified")
                         .WithMany()
                         .HasForeignKey("UserModifiedId")
@@ -1682,6 +1968,8 @@ namespace PraksaHDmp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Building");
+
+                    b.Navigation("User");
 
                     b.Navigation("UserCreated");
 

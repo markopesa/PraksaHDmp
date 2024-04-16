@@ -2,6 +2,8 @@
 {
     public class Application : BaseClass
     {
+        public User UserCreated { get; set; }
+        public User UserModified { get; set; }
         public ApplicationUsage ApplicationUsage { get; set; }
         public Server Server { get; set; }
         public Employee Employee { get; set; }

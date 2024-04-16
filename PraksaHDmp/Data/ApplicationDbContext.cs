@@ -22,6 +22,20 @@ namespace PraksaHDmp.Data
         public DbSet<Application> Applications { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<ComputerOS> ComputerOsses { get; set; }
+        public DbSet<County> Counties { get; set; } 
+        public DbSet<EntityType> EntityTypes { get; set; }
+        public DbSet<DeviceType> DeviceTypes { get; set; }
+        public DbSet<DeviceStateNew> DeviceStatesNew { get; set; }
+        public DbSet<HDDType> HDDTypes { get; set; }
+        public DbSet<MonitorResolution> MonitorResolutions { get; set; }
+        public DbSet<MonitorFormat> MonitorFormats { get; set; }
+        public DbSet<MobileDeviceType> MobileDeviceTypes { get; set; }
+        public DbSet<MonitorSize> MonitorSizes { get; set; }
+        public DbSet<MonitorType> MonitorTypes { get; set; }
+        public DbSet<PartnerContactType> PartnerContactTypes { get; set; }
+        public DbSet<PrinterType> PrinterTypes { get; set; }
+        
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
