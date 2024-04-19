@@ -42,7 +42,17 @@ namespace PraksaHDmp.Data
         public DbSet<Computer> Computers { get; set; }
         public DbSet<DocumentType> DocumentTypes { get; set; }
         public DbSet<Device> Devices { get; set; }
-        public DbSet<Photo> Photos { get; set; }    
+        public DbSet<Photo> Photos { get; set; }   
+        public DbSet<Multifunctional> Multifunctionals { get; set; }
+        public DbSet<Other> Others { get; set; }
+        public DbSet<HDDSpeed> HDDSpeeds { get; set; }
+        public DbSet<Scanner> Scanners { get; set; }
+        public DbSet<Printer> Printers { get; set; }
+        public DbSet<DocumentLog> DocumentLogs { get; set; }
+        public DbSet<MobileDevice> MobileDevices { get; set; }
+        public DbSet<Monitor> Monitors { get; set; }
+        public DbSet<Class> Classes { get; set; }
+
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
