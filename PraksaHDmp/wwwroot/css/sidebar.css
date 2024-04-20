@@ -9,7 +9,7 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	background-color: #343a40;
-	color: #fff;
+	color: #ffffff;
 }
 
 .sidebar-brand {
@@ -23,7 +23,7 @@
 .sidebar-nav-link {
 	padding: 10px 16px;
 	display: block;
-	color: #ffffff;
+	color: #ffffff !important;
 	text-decoration: none;
 }
 

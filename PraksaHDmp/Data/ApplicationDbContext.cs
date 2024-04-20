@@ -51,7 +51,6 @@ namespace PraksaHDmp.Data
         public DbSet<DocumentLog> DocumentLogs { get; set; }
         public DbSet<MobileDevice> MobileDevices { get; set; }
         public DbSet<Monitor> Monitors { get; set; }
-        public DbSet<Class> Classes { get; set; }
 
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
