@@ -1,95 +1,107 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PraksaHDmp</title>
+<head runat="server">
+    <title> PraksaHDmp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/PraksaHDmp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/PraksaHDmp.styles.css" rel="stylesheet" />
+    <link href="~/css/sidebar.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav class="sidebar">
-            <div class="sidebar-brand">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HAMIT Praksa</a>
-            </div>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="sidebar-nav-link" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="sidebar-nav-link" data-bs-toggle="collapse" href="#collapse1">Šifranici</a>
-                    <div class="collapse" id="collapse1">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="sidebar-nav-link" data-bs-toggle="collapse" href="#collapseZaposlenici">Korisnici</a>
-                                <div class="collapse" id="collapseZaposlenici">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item"><a class="sidebar-nav-link" href="#">Novi korisnik</a></li>
-                                        <li class="nav-item"><a class="sidebar-nav-link" href="#">Pregled korisnika</a></li>
-                                        <li class="nav-item"><a class="sidebar-nav-link" href="#">Pregled neaktivnih korisnika</a></li>
-                                        <li class="nav-item"><a class="sidebar-nav-link" href="#">Pregled korisničkih uloga</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="sidebar-nav-link" data-bs-toggle="collapse" href="#collapseZgrade">Zgrade</a>
-                                <div class="collapse" id="collapseZgrade">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item"><a class="sidebar-nav-link" href="#">Popis zgrada</a></li>
-                                        <li class="nav-item"><a class="sidebar-nav-link" href="#">Dodaj zgradu</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            
-                            <li class="nav-item"><a class="sidebar-nav-link" href="#">Sobe</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="sidebar-nav-link" data-bs-toggle="collapse" href="#collapse2">Aplikacije</a>
-                    <div class="collapse" id="collapse2">
-                        <ul class="nav flex-column">
-                            <li class="nav-item"><a class="sidebar-nav-link" href="#">Action</a></li>
-                            <li class="nav-item"><a class="sidebar-nav-link" href="#">Another action</a></li>
-                            <li class="nav-item"><a class="sidebar-nav-link" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="sidebar-nav-link" data-bs-toggle="collapse" href="#collapse3">Oprema</a>
-                    <div class="collapse" id="collapse3">
-                        <ul class="nav flex-column">
-                            <li class="nav-item"><a class="sidebar-nav-link" href="#">Action</a></li>
-                            <li class="nav-item"><a class="sidebar-nav-link" href="#">Another action</a></li>
-                            <li class="nav-item"><a class="sidebar-nav-link" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="sidebar-nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                </li>
-            </ul>
-        </nav>
+    <div class="d-flex" id="wrapper">
+        <div class="bg-light border-light" id="sidebar-wrapper">
+            <div class="sidebar-heading">PraksaHDmp</div>
+            <div class="list-group list-group-flush">
+                <a href="#dashboardCollapse" class="list-group-item list-group-item-action bg-light" data-toggle="collapse" aria-expanded="true">
+                    Dashboard
+                </a>
 
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+                <a href="#aplikacijeCollapse" class="list-group-item list-group-item-action bg-light" data-toggle="collapse" aria-expanded="true">
+                    Aplikacije
+                </a>
+                <div id="aplikacijeCollapse" class="collapse">
+          
+                    <a href="#">Item A</a><br>
+                    <a href="#">Item B</a><br>
+                    <a href="#">Item C</a><br>
+                </div>
+
+                <a href="#opremaCollapse" class="list-group-item list-group-item-action bg-light" data-toggle="collapse" aria-expanded="true">
+                    Oprema
+                </a>
+                <div id="opremaCollapse" class="collapse">
+                    
+                    <a href="#">Item X</a><br>
+                    <a href="#">Item Y</a><br>
+                    <a href="#">Item Z</a><br>
+                </div>
+
+                <a href="#sifraniciCollapse" class="list-group-item list-group-item-action bg-light" data-toggle="collapse" aria-expanded="true">
+                    Šifranici
+                </a>
+                <div id="sifraniciCollapse" class="collapse">
+                    <div class="dropdown">
+                        <a class="list-group-item list-group-item-action dropdown-toggle" href="#" role="button" id="dropdownKorisnici" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Korisnici
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownKorisnici">
+                            <a class="dropdown-item"  href="#">Novi norisnik</a>
+                            <a class="dropdown-item" asp-controller="Users" asp-action="Index">Pregled korisnika</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a class="list-group-item list-group-item-action dropdown-toggle" href="#" role="button" id="dropdownPartneri" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Partneri
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownPartneri">
+                            <a class="dropdown-item" href="#">Pregled Partnera</a>
+                            <a class="dropdown-item" href="#">Tipovi kontakta</a>
+                            <a class="dropdown-item" href="#">Županije</a>
+                        </div>
+                    </div>
+                    <a href="#" class="list-group-item list-group-item-action">Aplikacije</a>
+                    <a href="#" class="list-group-item list-group-item-action">Oprema</a>
+                    <a href="#" class="list-group-item list-group-item-action">Lokacije</a>
+                    <a href="#" class="list-group-item list-group-item-action">Zgrade</a>
+                    <a href="#" class="list-group-item list-group-item-action">Sobe</a>
+                    <a href="#" class="list-group-item list-group-item-action">Djelatnici</a>
+                    <a href="#" class="list-group-item list-group-item-action">Neaktivni djelatnici</a>
+                    <a href="#" class="list-group-item list-group-item-action">Tipovi entiteta</a>
+                </div>
+            </div>
+
+        </div>
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button type="button" id="menu-toggle" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </nav>
+            <div class="container-fluid">
+                
+                @RenderBody()
+            </div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - HAMIT Praksa - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+    <div class="container body-content">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        <hr />
+        <footer>
+            <p>&copy; HAMIT Praksa - @DateTime.Now.Year - PraksaHDmp</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

@@ -22,7 +22,7 @@ namespace PraksaHDmp.Data
         [ForeignKey("UserModifiedId")]
         public int? UserModifiedId { get; set; }
         
-        public User UserModified { get; set; }
+        public User? UserModified { get; set; }
 
         public ICollection<UserRole> UserRoles { get; set; }
     }
