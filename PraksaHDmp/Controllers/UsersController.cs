@@ -66,8 +66,7 @@ namespace PraksaHDmp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserCreatedId"] = new SelectList(_context.User, "Id", "Id", user.UserCreatedId);
-            ViewData["UserModifiedId"] = new SelectList(_context.User, "Id", "Id", user.UserModifiedId);
+
             return View(user);
         }
 
@@ -151,23 +150,20 @@ namespace PraksaHDmp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.User == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.User'  is null.");
-            }
             var user = await _context.User.FindAsync(id);
-            if (user != null)
+            if (user == null)
             {
-                _context.User.Remove(user);
+                return NotFound();
             }
-            
+
+            _context.User.Remove(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserExists(int id)
         {
-          return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

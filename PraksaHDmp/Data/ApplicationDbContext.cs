@@ -55,19 +55,22 @@ namespace PraksaHDmp.Data
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
+     
             modelBuilder.Entity<User>()
                 .HasOne(u => u.UserCreated)
-                .WithMany()
-                .HasForeignKey(u => u.UserCreatedId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .WithOne()
+                .HasForeignKey<User>(u => u.UserCreatedId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<User>()
                 .HasOne(u => u.UserModified)
-                .WithMany()
-                .HasForeignKey(u => u.UserModifiedId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .WithOne()
+                .HasForeignKey<User>(u => u.UserModifiedId)
+                .OnDelete(DeleteBehavior.Restrict);
+        
+            base.OnModelCreating(modelBuilder);
+
+        
 
             modelBuilder.Entity<UserRole>()
                 .HasKey(ur => new { ur.UserId, ur.RoleId });
