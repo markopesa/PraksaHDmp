@@ -2,27 +2,55 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PraksaHDmp.Data;
+using PraksaHDmp.Models;
 
 namespace PraksaHDmp.Controllers
 {
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public UsersController(ApplicationDbContext context)
+        public UsersController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
+        public async Task<IActionResult> InactiveUsers()
+        { 
+
+                List<User> allUsers = await _context.User.ToListAsync();
+
+                List<User> inactiveUsers = allUsers.Where(u => !u.Active).ToList();
+
+                UserInactiveVM viewModel = new UserInactiveVM
+                {
+                    InactiveUsers = inactiveUsers
+                };
+
+                return View(viewModel);
+            
+        }
+
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.User.Include(u => u.UserCreated).Include(u => u.UserModified).Where(u=>u.Active==true);
-            return View(await applicationDbContext.ToListAsync());
+            var users = await _context.User
+                .Include(u => u.UserCreated)
+                .Include(u => u.UserModified)
+                .Where(u => u.Active)
+                .ToListAsync();
+
+            var userVMs = _mapper.Map<List<UserVM>>(users);
+
+            return View(userVMs);
         }
 
         // GET: Users/Details/5
@@ -48,8 +76,6 @@ namespace PraksaHDmp.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            ViewData["UserCreatedId"] = new SelectList(_context.User, "Id", "Id");
-            ViewData["UserModifiedId"] = new SelectList(_context.User, "Id", "Id");
             return View();
         }
 
@@ -58,12 +84,13 @@ namespace PraksaHDmp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Active,DateCreated,FirstName,LastName,Username,Mail,UserCreatedId,UserModifiedId")] User user)
+        public async Task<IActionResult> Create(UserCreateVM userVM)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    var user = _mapper.Map<User>(userVM);
                     user.DateCreated = DateTime.Now;
                     user.Active = true;
                     user.UserCreatedId = null;
@@ -79,7 +106,7 @@ namespace PraksaHDmp.Controllers
                 throw;
             }
 
-            return View(user);
+            return View(userVM);
         }
 
         // GET: Users/Edit/5
@@ -95,9 +122,11 @@ namespace PraksaHDmp.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserCreatedId"] = new SelectList(_context.User, "Id", "Id", user.UserCreatedId);
-            ViewData["UserModifiedId"] = new SelectList(_context.User, "Id", "Id", user.UserModifiedId);
-            return View(user);
+
+            var userVM = _mapper.Map<UserEditVM>(user);
+            userVM.DateModified = DateTime.Now;
+
+            return View(userVM);
         }
 
         // POST: Users/Edit/5
@@ -105,9 +134,9 @@ namespace PraksaHDmp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Active,DateCreated,DateModified,FirstName,LastName,Username,Mail,LastLogin,UserCreatedId,UserModifiedId")] User user)
+        public async Task<IActionResult> Edit(int id, UserEditVM userVM)
         {
-            if (id != user.Id)
+            if (id != userVM.Id)
             {
                 return NotFound();
             }
@@ -116,12 +145,21 @@ namespace PraksaHDmp.Controllers
             {
                 try
                 {
+                    var user = await _context.User.FindAsync(id);
+                    if (user == null)
+                    {
+                        return NotFound();
+                    }
+
+                    _mapper.Map(userVM, user);
+                    user.DateModified = DateTime.Now;
+
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Id))
+                    if (!UserExists(userVM.Id))
                     {
                         return NotFound();
                     }
@@ -132,10 +170,10 @@ namespace PraksaHDmp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserCreatedId"] = new SelectList(_context.User, "Id", "Id", user.UserCreatedId);
-            ViewData["UserModifiedId"] = new SelectList(_context.User, "Id", "Id", user.UserModifiedId);
-            return View(user);
+
+            return View(userVM);
         }
+
 
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -176,6 +214,23 @@ namespace PraksaHDmp.Controllers
         private bool UserExists(int id)
         {
             return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        // POST: Users/Deactivate/5
+        [HttpPost, ActionName("Deactivate")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Deactivate(int id)
+        {
+            var user = await _context.User.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.Active = false;
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

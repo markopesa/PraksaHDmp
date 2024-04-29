@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PraksaHDmp.Data.User>
+﻿@model IEnumerable<UserVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,25 +7,25 @@
 </h1>
 
 <p>
-    <a asp-action="Create">Kreiraj novog korisnika</a>
+    <button type="button" onclick="location.href='@Url.Action("Create")'" class="btn btn-primary">Kreiraj novog korisnika</button>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayName("Creation Date")
+                @Html.DisplayNameFor(model=>model.DateCreated)
             </th>
             <th>
-                @Html.DisplayName("First name")
+                @Html.DisplayNameFor(model=>model.FirstName)
             </th>
             <th>
-                @Html.DisplayName("Last name")
+                @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
-                @Html.DisplayName("Username")
+                @Html.DisplayNameFor(model => model.Username)
             </th>
             <th>
-                @Html.DisplayName("E-mail")
+                @Html.DisplayNameFor(model => model.Mail)
             </th>
             <th></th>
         </tr>
@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Mail)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
+                <button type="button" onclick="location.href='@Url.Action("Edit", new { id = item.Id })'" class="btn btn-primary">Uredi</button> |
+                <button type="button" onclick="location.href='@Url.Action("Details", new { id = item.Id })'" class="btn btn-secondary">Detalji</button> |
+                <button type="button" onclick="location.href='@Url.Action("Delete", new { id = item.Id })'" class="btn btn-danger">Deaktiviraj</button>
             </td>
         </tr>
 }

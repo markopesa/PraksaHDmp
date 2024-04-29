@@ -1,0 +1,27 @@
+﻿@model UserInactiveVM
+
+<h1>Neaktivni korisnici</h1>
+
+@if (Model.InactiveUsers.Count > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Korisničko ime</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.InactiveUsers)
+            {
+                <tr>
+                    <td>@user.Username</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nema neaktivnih korisnika</p>
+}

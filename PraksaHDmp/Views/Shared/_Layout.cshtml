@@ -45,8 +45,9 @@
                             Korisnici
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownKorisnici">
-                            <a class="dropdown-item"  href="#">Novi norisnik</a>
+                            <a class="dropdown-item" asp-controller="Users" asp-action="Create">Novi norisnik</a>
                             <a class="dropdown-item" asp-controller="Users" asp-action="Index">Pregled korisnika</a>
+                            <a class="dropdown-item" asp-controller="Users" asp-action="InactiveUsers">Neaktivni korisnici</a>
                         </div>
                     </div>
                     <div class="dropdown">
