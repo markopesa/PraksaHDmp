@@ -24,7 +24,7 @@ namespace PraksaHDmp.Data
 
         public User? UserModified { get; set; }
 
-        public ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<UserRole>? UserRoles { get; set; }
     }
 
 }

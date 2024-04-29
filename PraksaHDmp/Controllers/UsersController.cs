@@ -21,7 +21,7 @@ namespace PraksaHDmp.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.User.Include(u => u.UserCreated).Include(u => u.UserModified);
+            var applicationDbContext = _context.User.Include(u => u.UserCreated).Include(u => u.UserModified).Where(u=>u.Active==true);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -58,13 +58,25 @@ namespace PraksaHDmp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Active,DateCreated,DateModified,FirstName,LastName,Username,Mail,LastLogin,UserCreatedId,UserModifiedId")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Active,DateCreated,FirstName,LastName,Username,Mail,UserCreatedId,UserModifiedId")] User user)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    user.DateCreated = DateTime.Now;
+                    user.Active = true;
+                    user.UserCreatedId = null;
+                    user.UserModifiedId = null;
+                    _context.Add(user);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"error: {ex.Message}");
+                throw;
             }
 
             return View(user);

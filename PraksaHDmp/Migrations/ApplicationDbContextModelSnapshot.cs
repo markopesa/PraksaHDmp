@@ -273,7 +273,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Application", b =>
@@ -351,7 +351,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Applications");
+                    b.ToTable("Applications", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.ApplicationUsage", b =>
@@ -390,7 +390,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("ApplicationUsages");
+                    b.ToTable("ApplicationUsages", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Building", b =>
@@ -431,7 +431,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Buildings");
+                    b.ToTable("Buildings", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Computer", b =>
@@ -507,7 +507,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Computers");
+                    b.ToTable("Computers", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.ComputerOS", b =>
@@ -543,7 +543,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("ComputerOsses");
+                    b.ToTable("ComputerOsses", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Contact", b =>
@@ -586,7 +586,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contacts", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.County", b =>
@@ -622,7 +622,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Counties");
+                    b.ToTable("Counties", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Department", b =>
@@ -658,7 +658,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Device", b =>
@@ -742,7 +742,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Devices");
+                    b.ToTable("Devices", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.DeviceServer", b =>
@@ -778,7 +778,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("DeviceServers");
+                    b.ToTable("DeviceServers", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.DeviceStateNew", b =>
@@ -814,7 +814,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("DeviceStatesNew");
+                    b.ToTable("DeviceStatesNew", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.DeviceType", b =>
@@ -850,7 +850,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("DeviceTypes");
+                    b.ToTable("DeviceTypes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.DocumentLog", b =>
@@ -895,7 +895,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("DocumentLogs");
+                    b.ToTable("DocumentLogs", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.DocumentType", b =>
@@ -912,7 +912,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DocumentTypes");
+                    b.ToTable("DocumentTypes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Employee", b =>
@@ -952,7 +952,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employee", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.EntityType", b =>
@@ -988,7 +988,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("EntityTypes");
+                    b.ToTable("EntityTypes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.HDDSpeed", b =>
@@ -1024,7 +1024,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("HDDSpeeds");
+                    b.ToTable("HDDSpeeds", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.HDDType", b =>
@@ -1060,7 +1060,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("HDDTypes");
+                    b.ToTable("HDDTypes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Location", b =>
@@ -1101,7 +1101,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Locations");
+                    b.ToTable("Locations", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Log", b =>
@@ -1141,7 +1141,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Logs");
+                    b.ToTable("Logs", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.MobileDevice", b =>
@@ -1191,7 +1191,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("MobileDevices");
+                    b.ToTable("MobileDevices", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.MobileDeviceType", b =>
@@ -1227,7 +1227,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("MobileDeviceTypes");
+                    b.ToTable("MobileDeviceTypes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Monitor", b =>
@@ -1290,7 +1290,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Monitors");
+                    b.ToTable("Monitors", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.MonitorFormat", b =>
@@ -1326,7 +1326,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("MonitorFormats");
+                    b.ToTable("MonitorFormats", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.MonitorResolution", b =>
@@ -1367,7 +1367,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("MonitorResolutions");
+                    b.ToTable("MonitorResolutions", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.MonitorSize", b =>
@@ -1403,7 +1403,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("MonitorSizes");
+                    b.ToTable("MonitorSizes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.MonitorType", b =>
@@ -1439,7 +1439,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("MonitorTypes");
+                    b.ToTable("MonitorTypes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Multifunctional", b =>
@@ -1478,7 +1478,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Multifunctionals");
+                    b.ToTable("Multifunctionals", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Other", b =>
@@ -1517,7 +1517,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Others");
+                    b.ToTable("Others", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Partner", b =>
@@ -1553,7 +1553,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Partners");
+                    b.ToTable("Partners", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.PartnerContactType", b =>
@@ -1589,7 +1589,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("PartnerContactTypes");
+                    b.ToTable("PartnerContactTypes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Photo", b =>
@@ -1633,7 +1633,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Photos");
+                    b.ToTable("Photos", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Printer", b =>
@@ -1692,7 +1692,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Printers");
+                    b.ToTable("Printers", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.PrinterType", b =>
@@ -1728,7 +1728,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("PrinterTypes");
+                    b.ToTable("PrinterTypes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.RAMType", b =>
@@ -1764,7 +1764,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("RAMTypes");
+                    b.ToTable("RAMTypes", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Role", b =>
@@ -1800,7 +1800,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Scanner", b =>
@@ -1839,7 +1839,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Scanners");
+                    b.ToTable("Scanners", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.Server", b =>
@@ -1880,7 +1880,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("UserModifiedId");
 
-                    b.ToTable("Servers");
+                    b.ToTable("Servers", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.User", b =>
@@ -1935,7 +1935,7 @@ namespace PraksaHDmp.Migrations
                         .IsUnique()
                         .HasFilter("[UserModifiedId] IS NOT NULL");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("PraksaHDmp.Data.UserRole", b =>
@@ -1953,7 +1953,7 @@ namespace PraksaHDmp.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UserRoles");
+                    b.ToTable("UserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -3,34 +3,29 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-
-
-<h1>Index</h1>
+<h1>Popis aktivnih korisnika
+</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Kreiraj novog korisnika</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Active)
+                @Html.DisplayName("Creation Date")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
+                @Html.DisplayName("First name")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                @Html.DisplayName("Last name")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                @Html.DisplayName("Username")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Mail)
+                @Html.DisplayName("E-mail")
             </th>
             <th></th>
         </tr>
@@ -38,9 +33,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateCreated)
             </td>
@@ -57,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Mail)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
             </td>
         </tr>
 }
