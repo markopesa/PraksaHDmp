@@ -7,9 +7,6 @@ namespace PraksaHDmp.Models
         public int Id { get; set; }
         [Display(Name = "Datum modificiranja")]
         public DateTime DateModified { get; set; }
-        [Display(Name = "Datum kreiranja")]
-        public DateTime DateCreated { get; set; }
-
         [Display(Name = "Ime")]
         public string FirstName { get; set; }
         [Display(Name = "Prezime")]

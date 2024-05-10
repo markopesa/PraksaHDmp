@@ -3,57 +3,48 @@
 @{
     ViewData["Title"] = "Index";
 }
-<h1>Popis aktivnih korisnika
-</h1>
+
+<h1>Popis aktivnih korisnika</h1>
 
 <p>
-    <button type="button" onclick="location.href='@Url.Action("Create")'" class="btn btn-primary">Kreiraj novog korisnika</button>
+    <button class="btn btn-success" type="button" onclick="location.href='@Url.Action("Create")'" class="btn btn-primary">Kreiraj novog korisnika</button>
 </p>
-<table class="table">
+
+
+<table id="userTable" class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model=>model.DateCreated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model=>model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Mail)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.DateCreated)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.Username)</th>
+            <th>@Html.DisplayNameFor(model => model.Mail)</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mail)
-            </td>
-            <td>
-                <button type="button" onclick="location.href='@Url.Action("Edit", new { id = item.Id })'" class="btn btn-primary">Uredi</button> |
-                <button type="button" onclick="location.href='@Url.Action("Details", new { id = item.Id })'" class="btn btn-secondary">Detalji</button> |
-                <button type="button" onclick="location.href='@Url.Action("Delete", new { id = item.Id })'" class="btn btn-danger">Deaktiviraj</button>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.DateCreated)</td>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                <td>@Html.DisplayFor(modelItem => item.Mail)</td>
+                <td>
+                    <button type="button" onclick="location.href='@Url.Action("Edit", new { id = item.Id })'" class="btn btn-primary">Uredi</button> |
+                    <button type="button" onclick="location.href='@Url.Action("Details", new { id = item.Id })'" class="btn btn-secondary">Detalji</button> |
+                    <button type="button" onclick="location.href='@Url.Action("Delete", new { id = item.Id })'" class="btn btn-danger">Deaktiviraj</button>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $('#userTable').DataTable();
+        });
+    </script>
+}
