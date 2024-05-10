@@ -7,15 +7,17 @@
     <table>
         <thead>
             <tr>
-                <th>Korisničko ime</th>
+                <th>@Html.DisplayNameFor(model => model.Username)</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var user in Model.InactiveUsers)
+            @foreach (var item in Model.InactiveUsers)
             {
                 <tr>
-                    <td>@user.Username</td>
-
+                    <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                    <td>
+                        <button data-id="@item.Id" class="btn btn-danger deleteBtn" type="button">Delete</button>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -24,4 +26,31 @@
 else
 {
     <p>Nema neaktivnih korisnika</p>
+}
+<form id="deleteForm" asp-action="Delete">
+    <input type="hidden" id="userId" name="id" />
+    
+</form>
+@section Scripts {
+    <script>
+        $(function () {
+            $(".deleteBtn").click(function (e) {
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted there is no going back",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }).then((confirm) => {
+                    if (confirm) {
+                        var btn = $(this)
+                        var id = btn.data("id");
+                        $("#userId").val(id);
+                        $("#deleteForm").submit();
+
+                    }
+                });
+            });
+        });
+    </script>
 }

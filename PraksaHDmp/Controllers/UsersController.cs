@@ -175,8 +175,8 @@ namespace PraksaHDmp.Controllers
         }
 
 
-        // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Users/Deactivate/5
+        public async Task<IActionResult> DeactivateConfirm(int? id)
         {
             if (id == null || _context.User == null)
             {
@@ -208,7 +208,7 @@ namespace PraksaHDmp.Controllers
 
             _context.User.Remove(user);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(InactiveUsers));
         }
 
         private bool UserExists(int id)

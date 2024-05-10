@@ -32,9 +32,10 @@
                 <td>@Html.DisplayFor(modelItem => item.Username)</td>
                 <td>@Html.DisplayFor(modelItem => item.Mail)</td>
                 <td>
-                    <button type="button" onclick="location.href='@Url.Action("Edit", new { id = item.Id })'" class="btn btn-primary">Uredi</button> |
-                    <button type="button" onclick="location.href='@Url.Action("Details", new { id = item.Id })'" class="btn btn-secondary">Detalji</button> |
-                    <button type="button" onclick="location.href='@Url.Action("Delete", new { id = item.Id })'" class="btn btn-danger">Deaktiviraj</button>
+
+                    <a type="button" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a> |
+                    <a type="button" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a> |
+                    <a type="button" asp-action="DeactivateConfirm" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa-solid fa-person-circle-minus"></i>Deaktiviraj</a>
                 </td>
             </tr>
         }
