@@ -1,4 +1,5 @@
-﻿using PraksaHDmp.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using PraksaHDmp.Contracts;
 using PraksaHDmp.Data;
 
 namespace PraksaHDmp.Repositories
@@ -11,34 +12,47 @@ namespace PraksaHDmp.Repositories
         {
             this.context = context;
         }
-        public Task<T> GetAdync(int id)
+        public async Task<T> GetAsync(int? id)
         {
-            throw new NotImplementedException();
+            if (id == null)
+            {
+                return null;
+            }
+
+            return await context.Set<T>().FindAsync(id);
         }
 
-        public Task<List<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await context.Set<T>().ToListAsync();
+
         }
 
-        public Task<bool> Exists(int id)
+        public async Task<bool> Exists(int id)
         {
-            throw new NotImplementedException();
+            var entity = await GetAsync(id);
+            return entity != null;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await GetAsync(id);
+            context.Set<T>().Remove(entity);
+            await context.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            context.Entry(entity).State = EntityState.Modified;
+            await context.SaveChangesAsync();
         }
 
-        public Task AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            await context.AddAsync(entity);
+            await context.SaveChangesAsync();
+            return entity;
+
         }
     }
     

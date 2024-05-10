@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using PraksaHDmp.Contracts;
 using PraksaHDmp.Data;
 using PraksaHDmp.Models;
 
@@ -14,63 +15,47 @@ namespace PraksaHDmp.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IUserRepository userRepository;
         private readonly IMapper _mapper;
 
-        public UsersController(ApplicationDbContext context, IMapper mapper)
+        public UsersController(IUserRepository userRepository, IMapper mapper)
         {
-            _context = context;
+            this.userRepository = userRepository;
             _mapper = mapper;
         }
         public async Task<IActionResult> InactiveUsers()
-        { 
+        {
 
-                List<User> allUsers = await _context.User.ToListAsync();
-
-                List<User> inactiveUsers = allUsers.Where(u => !u.Active).ToList();
+                List<User> inactiveUsers = await userRepository.GetInactiveUsersAsync();
 
                 UserInactiveVM viewModel = new UserInactiveVM
                 {
                     InactiveUsers = inactiveUsers
                 };
 
-                return View(viewModel);
-            
+                return View(viewModel);  
+
         }
 
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            var users = await _context.User
-                .Include(u => u.UserCreated)
-                .Include(u => u.UserModified)
-                .Where(u => u.Active)
-                .ToListAsync();
-
-            var userVMs = _mapper.Map<List<UserVM>>(users);
-
+            var userVMs = _mapper.Map<List<UserVM>>(await userRepository.GetActiveUsersAsync());
             return View(userVMs);
         }
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.User == null)
-            {
-                return NotFound();
-            }
 
-            var user = await _context.User
-                .Include(u => u.UserCreated)
-                .Include(u => u.UserModified)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await userRepository.GetAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
-
-            return View(user);
+            var UserVM = _mapper.Map<User>(user);
+            return View(UserVM);
         }
 
         // GET: Users/Create
@@ -86,24 +71,15 @@ namespace PraksaHDmp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(UserCreateVM userVM)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var user = _mapper.Map<User>(userVM);
-                    user.DateCreated = DateTime.Now;
-                    user.Active = true;
-                    user.UserCreatedId = null;
-                    user.UserModifiedId = null;
-                    _context.Add(user);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"error: {ex.Message}");
-                throw;
+                var user = _mapper.Map<User>(userVM);
+                user.DateCreated = DateTime.Now;
+                user.Active = true;
+                user.UserCreatedId = null;
+                user.UserModifiedId = null;
+                await userRepository.AddAsync(user);
+                return RedirectToAction(nameof(Index));
             }
 
             return View(userVM);
@@ -112,12 +88,7 @@ namespace PraksaHDmp.Controllers
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.User == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.User.FindAsync(id);
+            var user = await userRepository.GetAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -143,31 +114,17 @@ namespace PraksaHDmp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                var user = await userRepository.GetAsync(id);
+                if (user == null)
                 {
-                    var user = await _context.User.FindAsync(id);
-                    if (user == null)
-                    {
-                        return NotFound();
-                    }
-
-                    _mapper.Map(userVM, user);
-                    user.DateModified = DateTime.Now;
-
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserExists(userVM.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                _mapper.Map(userVM, user);
+                user.DateModified = DateTime.Now;
+
+                await userRepository.UpdateAsync(user);
+
                 return RedirectToAction(nameof(Index));
             }
 
@@ -178,15 +135,12 @@ namespace PraksaHDmp.Controllers
         // GET: Users/Deactivate/5
         public async Task<IActionResult> DeactivateConfirm(int? id)
         {
-            if (id == null || _context.User == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.User
-                .Include(u => u.UserCreated)
-                .Include(u => u.UserModified)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await userRepository.GetAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -200,20 +154,13 @@ namespace PraksaHDmp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _context.User.Remove(user);
-            await _context.SaveChangesAsync();
+            await userRepository.DeleteAsync(id);
             return RedirectToAction(nameof(InactiveUsers));
         }
 
-        private bool UserExists(int id)
+        private async Task<bool> UserExists(int id)
         {
-            return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
+            return await userRepository.Exists(id);
         }
 
         // POST: Users/Deactivate/5
@@ -221,15 +168,14 @@ namespace PraksaHDmp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Deactivate(int id)
         {
-            var user = await _context.User.FindAsync(id);
+            var user = await userRepository.GetAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
 
             user.Active = false;
-            _context.Update(user);
-            await _context.SaveChangesAsync();
+            await userRepository.UpdateAsync(user);
             return RedirectToAction(nameof(Index));
         }
     }
