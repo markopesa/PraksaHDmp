@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PraksaHDmp.Data
 {
-    public class Employee 
+    public class Employee : IdentityUser
     {
         [Column(TypeName = "nvarchar(50)")]
         public string FirstName { get; set; }
